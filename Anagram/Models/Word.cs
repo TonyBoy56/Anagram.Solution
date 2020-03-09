@@ -6,13 +6,17 @@ namespace Anagram.Models
   public class Word
   {
     public string InputWord { get; set; }
+    public string Header { get; set; }
     public List<string> ActualAnagrams { get; set; } = new List<string> {};
-    public List<string> PossibleAnagrams { get; } = new List<string> {};
+    public string PossibleAnagrams { get; }
+    public string[] PossibleAnagramsArray { get; set; } 
 
-    public Word(string inputWord, List<string> possibleAnagrams)
+    public Word(string inputWord, string possibleAnagrams)
     {
       InputWord = inputWord;
+      Header = "";
       PossibleAnagrams = possibleAnagrams;
+      PossibleAnagramsArray = possibleAnagrams.Split(" ");
       ActualAnagrams = new List<string> {};
     }
 
@@ -26,7 +30,7 @@ namespace Anagram.Models
     public List<char[]> WordListToCharArrays()
     {
       List<char[]> result = new List<char[]> {};
-      foreach (string currentWord in PossibleAnagrams)
+      foreach (string currentWord in PossibleAnagramsArray)
       {
         char[] charArray = currentWord.ToCharArray();
         Array.Sort(charArray);
@@ -43,8 +47,16 @@ namespace Anagram.Models
         string sortedListWord = new String(inputWordsArrays[i]);
         if (sortedWord == sortedListWord)
         {
-          ActualAnagrams.Add(PossibleAnagrams[i]);
+          ActualAnagrams.Add(PossibleAnagramsArray[i]);
         }
+      }
+      if (ActualAnagrams.Count == 0)
+      {
+        Header = "No anagrams here!";
+      }
+      else
+      {
+        Header = "The following words are anagrams:";
       }
     }
   }

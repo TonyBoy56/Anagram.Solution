@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Anagram Finder</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <div class="container">
+      <div class="well">
+        <h1>Test whether words are anagrams of another word!</h1>
+        <form action="/answer" method="post">
+          <label for="word">Enter a word:</label>
+          <input id="word" name="word" type="text">
+          <label for="list">Enter a list of possible anagrams, each separated by a space:</label>
+          <input id="list" name="list" type="text">
+          <button type="submit">Go!</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

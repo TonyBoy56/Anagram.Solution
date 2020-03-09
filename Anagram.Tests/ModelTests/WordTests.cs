@@ -11,8 +11,7 @@ namespace Anagram.Tests
     [TestMethod]
     public void WordConstructor_CreatesInstanceOfWord_Word()
     {
-      List<string> words = new List<string> {};
-      words.Add("beard");
+      string words = "beard";
       Word word = new Word("bread", words);
 
       Assert.AreEqual(typeof(Word), word.GetType());
@@ -22,8 +21,7 @@ namespace Anagram.Tests
     public void WordConstructor_ReturnsWord_String()
     {
       string myWord = "bread";
-      List<string> words = new List<string> {};
-      words.Add("beard");
+      string words = "beard";
       Word word = new Word(myWord, words);
 
       string result = word.InputWord;
@@ -34,8 +32,7 @@ namespace Anagram.Tests
     [TestMethod]
     public void WordConstructor_ReturnsList_List()
     {
-      List<string> words = new List<string> {};
-      words.Add("beard");
+      string words = "beard";
       Word word = new Word("bread", words);
 
       Assert.AreEqual(words, word.PossibleAnagrams);
@@ -45,8 +42,7 @@ namespace Anagram.Tests
     public void WordToCharArray_ReturnsArray_Array()
     {
       //Arrange
-      List<string> words = new List<string> {};
-      words.Add("b");
+      string words = "b";
       Word inputWord = new Word("b", words);
       string myWord = "b";
       
@@ -62,8 +58,7 @@ namespace Anagram.Tests
     public void WordListToCharArrays_ReturnsList_List()
     {
       //Arrange
-      List<string> anagrams = new List<string> {};
-      anagrams.Add("b");
+      string anagrams = "b";
       Word inputWordObject = new Word("bread", anagrams);
       string possibleAnagram = "b";
       List<char[]> listOfPossibleAnagrams = new List<char[]> {};
@@ -80,8 +75,7 @@ namespace Anagram.Tests
     public void WordToCharArray_SortList_List()
     {
       //Arrang 
-      List<string> words = new List<string> {};
-      words.Add("bread");
+      string words = "bread";
       Word inputWord = new Word("bread", words);
       string myWord = "bread";
 
@@ -97,8 +91,7 @@ namespace Anagram.Tests
     public void WordListToCharArray_SortListOfCharArrays_List()
     {
       //Arrange
-      List<string> anagrams = new List<string> {};
-      anagrams.Add("beard");
+      string anagrams = "beard";
       Word inputWordObject = new Word("bread", anagrams);
       string possibleAnagram = "beard";
       List<char[]> listOfPossibleAnagrams = new List<char[]> {};
@@ -117,8 +110,7 @@ namespace Anagram.Tests
     public void WordConstructor_MakesEmptyList_List()
     {
       //Arrange
-      List<string> anagrams = new List<string> {};
-      anagrams.Add("b");
+      string anagrams = "b";
       Word inputWordObject = new Word("bread", anagrams);
       List<string> comparisonList = new List<string> {};
 
@@ -133,8 +125,9 @@ namespace Anagram.Tests
     public void IsWordAnagram_ReturnsListOfWords_List()
     {
       //Arrange
-      List<string> words = new List<string> {};
-      words.Add("beard");
+      string words = "beard";
+      List<string> inputWords = new List<string> {};
+      inputWords.Add(words);
       Word inputWord = new Word("bread", words);
 
       //Act
@@ -144,7 +137,7 @@ namespace Anagram.Tests
 
       List<string> actualAnagrams = inputWord.ActualAnagrams;
       //Assert
-      CollectionAssert.AreEqual(words, actualAnagrams);
+      CollectionAssert.AreEqual(inputWords, actualAnagrams);
     }
   }
 }
